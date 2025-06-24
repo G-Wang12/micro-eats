@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Primary Colors */
+  --color-primary: #0078D4; /* Microsoft blue heritage - blue-600 */
+  --color-primary-50: #EBF8FF; /* Light blue tint - blue-50 */
+  --color-primary-100: #DBEAFE; /* Lighter blue - blue-100 */
+  --color-primary-500: #3B82F6; /* Medium blue - blue-500 */
+  --color-primary-600: #2563EB; /* Darker blue - blue-600 */
+  --color-primary-700: #1D4ED8; /* Deep blue - blue-700 */
+  
+  /* Secondary Colors */
+  --color-secondary: #6B46C1; /* Rich purple - purple-600 */
+  --color-secondary-50: #F5F3FF; /* Light purple tint - purple-50 */
+  --color-secondary-100: #EDE9FE; /* Lighter purple - purple-100 */
+  --color-secondary-500: #8B5CF6; /* Medium purple - purple-500 */
+  --color-secondary-600: #7C3AED; /* Darker purple - purple-600 */
+  
+  /* Accent Colors */
+  --color-accent: #F59E0B; /* Warm amber - amber-500 */
+  --color-accent-50: #FFFBEB; /* Light amber tint - amber-50 */
+  --color-accent-100: #FEF3C7; /* Lighter amber - amber-100 */
+  --color-accent-400: #FBBF24; /* Medium amber - amber-400 */
+  --color-accent-600: #D97706; /* Darker amber - amber-600 */
+  
+  /* Background Colors */
+  --color-background: #FAFAFA; /* Soft off-white - gray-50 */
+  --color-surface: #FFFFFF; /* Pure white - white */
+  --color-surface-hover: #F9FAFB; /* Light gray hover - gray-50 */
+  
+  /* Text Colors */
+  --color-text-primary: #1F2937; /* Deep charcoal - gray-800 */
+  --color-text-secondary: #6B7280; /* Balanced gray - gray-500 */
+  --color-text-tertiary: #9CA3AF; /* Light gray - gray-400 */
+  --color-text-inverse: #FFFFFF; /* White text - white */
+  
+  /* Status Colors */
+  --color-success: #10B981; /* Fresh green - emerald-500 */
+  --color-success-50: #ECFDF5; /* Light green tint - emerald-50 */
+  --color-success-100: #D1FAE5; /* Lighter green - emerald-100 */
+  --color-success-600: #059669; /* Darker green - emerald-600 */
+  
+  --color-warning: #F59E0B; /* Amber warning - amber-500 */
+  --color-warning-50: #FFFBEB; /* Light amber tint - amber-50 */
+  --color-warning-100: #FEF3C7; /* Lighter amber - amber-100 */
+  
+  --color-error: #EF4444; /* Clear red - red-500 */
+  --color-error-50: #FEF2F2; /* Light red tint - red-50 */
+  --color-error-100: #FEE2E2; /* Lighter red - red-100 */
+  --color-error-600: #DC2626; /* Darker red - red-600 */
+  
+  /* Border Colors */
+  --color-border: #E5E7EB; /* Light gray border - gray-200 */
+  --color-border-light: #F3F4F6; /* Very light border - gray-100 */
+  --color-border-dark: #D1D5DB; /* Medium gray border - gray-300 */
+  
+  /* Shadow Colors */
+  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+@layer base {
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  
+  .font-mono {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:bg-secondary-600 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2;
+  }
+  
+  .card {
+    @apply bg-surface rounded-lg shadow-card border border-border-light transition-all duration-200;
+  }
+  
+  .card-hover {
+    @apply hover:shadow-medium hover:scale-[1.02] hover:-translate-y-1;
+  }
+  
+  .input-field {
+    @apply w-full px-3 py-2 border border-border rounded-md bg-surface text-text-primary placeholder-text-tertiary focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-200;
+  }
+  
+  .nav-item {
+    @apply flex items-center px-3 py-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-hover transition-all duration-200;
+  }
+  
+  .nav-item-active {
+    @apply bg-primary-50 text-primary-600 font-medium;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .animation-reduced {
+    @media (prefers-reduced-motion: reduce) {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+  
+  .focus-visible-only {
+    @apply focus:outline-none focus-visible:outline-2 focus-visible:outline-primary-500 focus-visible:outline-offset-2;
+  }
+}
